@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Constants {
   static const String _lastFmApiKey = "7d12dadd689d8eb791e84f28542b6438";
-  static const String baseUrl = "http://ws.audioscrobbler.com/2.0/?format=json&";
+  static const String baseUrl = "http://ws.audioscrobbler.com/2.0/?format=json&api_key=$_lastFmApiKey&";
   static const String _appFontFamily = 'AvenirNextCyr';
 
   static const Color cardBorder = Color(0xffffffff);

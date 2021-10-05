@@ -6,8 +6,8 @@ import 'widgets/body.dart';
 import 'widgets/header.dart';
 import 'widgets/search.dart';
 
-class IndexPage extends StatelessWidget {
-  const IndexPage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

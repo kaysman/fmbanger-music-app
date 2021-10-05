@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fmbanger/config/constants.dart';
 
+import 'top_artists.dart';
+
 class IndexBody extends StatelessWidget {
   const IndexBody({Key? key}) : super(key: key);
 
@@ -21,7 +23,7 @@ class IndexBody extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                Container(color: Colors.purple),
+                TopArtistsView(),
                 Container(color: Colors.blue),
               ],
             ),

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'component/unfocus.dart';
 import 'config/constants.dart';
-import 'view/index/index.dart';
+import 'service/top_artists_service_model.dart';
+import 'view/home/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MultiProvider(
+    providers: [ChangeNotifierProvider(create: (_) => TopArtistsServiceModel())],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,8 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Constants.darkTheme(),
       builder: (context, child) => Unfocus(child: child!),
-      home: const IndexPage(),
+      home: const HomePage(),
     );
   }
 }
-

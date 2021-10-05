@@ -1,3 +1,4 @@
+import 'package:fmbanger/config/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'image.g.dart';
