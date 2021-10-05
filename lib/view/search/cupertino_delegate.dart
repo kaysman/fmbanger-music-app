@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 import 'search_abstract.dart';
@@ -19,7 +20,7 @@ class CupertinoSearchDelegate extends AbstractPlatformSearchDelegate {
   }
 
   @override
-  Widget buildResults(BuildContext context) {
+  Widget buildResults(BuildContext context)  {
     final List<String> result = search(query);
     return ListView.separated(
       itemCount: result.length,
@@ -33,7 +34,7 @@ class CupertinoSearchDelegate extends AbstractPlatformSearchDelegate {
   }
 
   @override
-  Widget buildSuggestions(BuildContext context) {
+  Widget buildSuggestions(BuildContext context)  {
     final List<String> result = search(query);
     return ListView.separated(
       itemCount: 1,
@@ -72,13 +73,39 @@ class CupertinoSearchDelegate extends AbstractPlatformSearchDelegate {
         trailing: CupertinoButton(
           child: const Text('Search'),
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          onPressed: () {
-            setQuery = queryTextController.text;
-            showResults(context);
+          onPressed: () async {
+            await showResults(context);
           },
         ),
       ),
-      child: Scaffold(body: body ?? Container()),
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Chip(
+                  label: Text("Artist"),
+                  backgroundColor: Colors.grey.shade800,
+                ),
+                Chip(
+                  label: Text("Album"),
+                  backgroundColor: Colors.grey.shade800,
+                ),
+                Chip(
+                  label: Text("Track"),
+                  backgroundColor: Colors.grey.shade800,
+                ),
+              ],
+            ),
+            Expanded(
+              child: body ?? Container(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

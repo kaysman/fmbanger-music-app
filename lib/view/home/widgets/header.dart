@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fmbanger/models/album.dart';
+import 'package:fmbanger/repository/album_search.dart';
 import 'package:fmbanger/view/search/cupertino_delegate.dart';
 import 'package:fmbanger/view/search/search_abstract.dart';
 
@@ -27,9 +29,7 @@ class IndexHeader extends StatelessWidget {
     );
   }
 
-  List<String> search(String text) {
-    return elements
-        .where((element) => element.toLowerCase().contains(text.toLowerCase()))
-        .toList();
+  Future<List<Album>> search(String text) async {
+    return await AlbumSearchRepository(text);
   }
 }

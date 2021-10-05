@@ -9,7 +9,7 @@ Future<T?> showPlatformSearch<T>({
   required AbstractPlatformSearchDelegate<T> delegate,
   String? query = '',
 }) {
-  delegate.setQuery = query!;
+  delegate.query = query ?? delegate.query;
   delegate.currentBody = SearchBody.suggestions;
   return Navigator.of(context).push(SearchPageRoute<T>(
     delegate: delegate,
@@ -29,16 +29,16 @@ abstract class AbstractPlatformSearchDelegate<T> {
   Widget buildScaffold(Widget? body, BuildContext context);
 
   String get query => queryTextController.text;
-  set setQuery(String value) {
+  set query(String value) {
     queryTextController.text = value;
   }
 
-  void showResults(BuildContext context) {
+  Future<void> showResults(BuildContext context) async {
     focusNode?.unfocus();
     currentBody = SearchBody.results;
   }
 
-  void showSuggestions(BuildContext context) {
+  Future<void> showSuggestions(BuildContext context) async {
     assert(focusNode != null);
     focusNode!.requestFocus();
     currentBody = SearchBody.suggestions;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fmbanger/service/hit_tracks_service_model.dart';
 import 'package:provider/provider.dart';
 import 'component/unfocus.dart';
 import 'config/constants.dart';
@@ -8,7 +9,10 @@ import 'view/home/home.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
-    providers: [ChangeNotifierProvider(create: (_) => TopArtistsServiceModel())],
+    providers: [
+      ChangeNotifierProvider(create: (_) => TopArtistsServiceModel()),
+      ChangeNotifierProvider(create: (_) => HitTracksServiceModel()),
+    ],
     child: const MyApp(),
   ));
 }

@@ -7,7 +7,8 @@ class TopArtistsRepository {
     /// it is just top 5 or 10 artists
     /// so we don't have to use pagination attributes here.
 
-    final url = "limit=5&method=chart.gettopartists";
+    final int limit = 9;
+    final url = "limit=$limit&method=chart.gettopartists";
 
     try {
       final response = await DioRequest().get(url);
