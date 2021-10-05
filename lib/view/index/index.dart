@@ -12,7 +12,7 @@ class IndexPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -21,15 +21,20 @@ class IndexPage extends StatelessWidget {
           ),
           child: CustomScrollView(
             slivers: [
+
               const SliverToBoxAdapter(
                 child: IndexHeader(),
               ),
+
               const SliverToBoxAdapter(
                 child: SizedBox(height: Constants.widgetSpacing),
               ),
+
+
               const SliverToBoxAdapter(
                 child: IndexSearch(),
               ),
+
 
               SliverFillRemaining(
                 child: IndexBody(),

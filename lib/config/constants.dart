@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static const String lastFmApiKey = "7d12dadd689d8eb791e84f28542b6438";
-  static const String _appFontFamily = 'Roboto';
+  static const String _lastFmApiKey = "7d12dadd689d8eb791e84f28542b6438";
+  static const String baseUrl = "http://ws.audioscrobbler.com/2.0/?format=json&";
+  static const String _appFontFamily = 'AvenirNextCyr';
 
   static const Color cardBorder = Color(0xffffffff);
   static const Color primaryColor = Color(0xffff9105);
@@ -27,46 +28,18 @@ class Constants {
     },
   );
 
-  static ThemeData lightTheme() {
+  static ThemeData darkTheme() {
     final typography = Typography.material2014();
 
-    final lightTextTheme = typography.black.apply(
-      fontFamily: _appFontFamily,
-      displayColor: const Color(0xff161616),
-      bodyColor: const Color(0xff161616),
-    );
-
     return ThemeData(
-      brightness: Brightness.light,
-      fontFamily: _appFontFamily,
-      typography: typography,
-      textTheme: lightTextTheme,
+      brightness: Brightness.dark,
       primarySwatch: _appPrimarySwatch,
+    fontFamily: _appFontFamily,
+    typography: typography,
+    scaffoldBackgroundColor: const Color(0xff000000),
+    indicatorColor: Constants.primaryColor,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
       canvasColor: const Color(0xffeff2f8),
-      inputDecorationTheme: const InputDecorationTheme(
-        contentPadding: EdgeInsets.only(left: 12, right: 8),
-        filled: true,
-        fillColor: Color(0xffFAFAFA),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 0.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 0.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 0.0),
-        ),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-        ),
-      ),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
-        foregroundColor: Color(0xff161616),
-      ),
-      visualDensity: VisualDensity.adaptivePlatformDensity,
     );
   }
 }
