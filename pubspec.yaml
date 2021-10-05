@@ -1,0 +1,84 @@
+name: fmbanger
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  xml: ^5.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+   - assets/fonts/
+
+  fonts:
+    - family: AvenirNextCyr
+      fonts:
+        # w100
+        - asset: assets/fonts/avenirnextcyr-ultralight.ttf
+          weight: 100
+        - asset: assets/fonts/avenirnextcyr-ultralightit.ttf
+          weight: 100
+          style: italic
+        # w200
+        - asset: assets/fonts/avenirnextcyr-thin.ttf
+          weight: 200
+        - asset: assets/fonts/avenirnextcyr-thin.ttf
+          weight: 200
+          style: italic
+
+        # w300
+        - asset: assets/fonts/avenirnextcyr-light.ttf
+          weight: 300
+        - asset: assets/fonts/avenirnextcyr-lightitalic.ttf
+          weight: 300
+          style: italic
+
+        # w400
+        - asset: assets/fonts/avenirnextcyr-regular.ttf
+          weight: 400
+        - asset: assets/fonts/avenirnextcyr-thin.ttf
+          weight: 400
+          style: italic
+
+        # w500
+        - asset: assets/fonts/avenirnextcyr-medium.ttf
+          weight: 500
+        - asset: assets/fonts/avenirnextcyr-mediumitalic.ttf
+          weight: 500
+          style: italic
+
+        # w600
+        - asset: assets/fonts/avenirnextcyr-demi.ttf
+          weight: 600
+        - asset: assets/fonts/avenirnextcyr-demiitalic.ttf
+          weight: 600
+          style: italic
+
+        # w700
+        - asset: assets/fonts/avenirnextcyr-bold.ttf
+          weight: 700
+        - asset: assets/fonts/avenirnextcyr-bolditalic.ttf
+          weight: 700
+          style: italic
+
+        # w800
+        - asset: assets/fonts/avenirnextcyr-heavy.ttf
+          weight: 800
+        - asset: assets/fonts/avenirnextcyr-heavyitalic.ttf
+          weight: 800
+          style: italic
+
+
