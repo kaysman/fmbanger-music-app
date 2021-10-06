@@ -31,7 +31,7 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Album"),
+        title: Text("Artist"),
       ),
       body: FutureBuilder<Artist>(
         future: getArtistInfo,
