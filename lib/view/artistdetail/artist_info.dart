@@ -61,15 +61,15 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: screenSize.height * 0.2,
+                height: screenSize.height * 0.24,
                 width: double.infinity,
                 child: Padding(
                   padding: const EdgeInsets.all(14.0),
                   child: Row(
                     children: [
                       SizedBox(
-                        height: 120,
-                        width: 120,
+                        height: 100,
+                        width: 100,
                         child: CachedNetworkImage(
                           imageUrl: artist.getExtraLarge,
                           fit: BoxFit.cover,
@@ -79,12 +79,19 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            artist.name!,
-                            style:
+                          Container(
+                            width: screenSize.width - 180,
+                            child: Text.rich(
+                              TextSpan(
+                                text: artist.name!,
+                                style:
                                 Theme.of(context).textTheme.headline4!.copyWith(
-                                      color: Colors.white,
-                                    ),
+                                  color: Colors.white,
+                                ),
+                              ),
+                              overflow: TextOverflow.clip,
+                              maxLines: 2,
+                            ),
                           ),
                           const SizedBox(height: 12.0),
                           buildInfoTextSpan(
@@ -153,14 +160,25 @@ class _ArtistDetailPageState extends State<ArtistDetailPage> {
             itemCount: artist.similar!.artist!.length,
             itemBuilder: (context, index) {
               final author = artist.similar!.artist![index];
-              return ListTile(
-                leading: SizedBox(
-                  width: 40,
-                  child: CachedNetworkImage(
-                    imageUrl: author.getSmall,
+              return GestureDetector(
+                onTap: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => ArtistDetailPage(
+                        artist: author.name!,
+                      ),
+                    ),
+                  );
+                },
+                child: ListTile(
+                  leading: SizedBox(
+                    width: 40,
+                    child: CachedNetworkImage(
+                      imageUrl: author.getSmall,
+                    ),
                   ),
+                  title: Text(author.name!),
                 ),
-                title: Text(author.name!),
               );
             },
           ),

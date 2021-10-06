@@ -10,7 +10,6 @@ Track _$TrackFromJson(Map json) => Track(
       wiki: json['wiki'] == null
           ? null
           : Wiki.fromJson(Map<String, dynamic>.from(json['wiki'] as Map)),
-      duration: json['duration'] as String?,
       listeners: json['listeners'] as String?,
       playcount: json['playcount'] as String?,
       url: json['url'] as String?,
@@ -32,7 +31,6 @@ Map<String, dynamic> _$TrackToJson(Track instance) => <String, dynamic>{
       'listeners': instance.listeners,
       'playcount': instance.playcount,
       'artist': instance.artist,
-      'duration': instance.duration,
       'wiki': instance.wiki,
     };
 

@@ -54,6 +54,7 @@ class CupertinoSearchDelegate extends AbstractPlatformSearchDelegate {
           ),
         ),
         middle: CupertinoSearchTextField(
+          placeholder: "Search album",
           controller: queryTextController,
           focusNode: focusNode,
           style: const TextStyle(
@@ -69,32 +70,7 @@ class CupertinoSearchDelegate extends AbstractPlatformSearchDelegate {
         ),
       ),
       child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Chip(
-                  label: Text("Artist"),
-                  backgroundColor: Colors.grey.shade800,
-                ),
-                Chip(
-                  label: Text("Album"),
-                  backgroundColor: Colors.grey.shade800,
-                ),
-                Chip(
-                  label: Text("Track"),
-                  backgroundColor: Colors.grey.shade800,
-                ),
-              ],
-            ),
-            Expanded(
-              child: body ?? Container(),
-            ),
-          ],
-        ),
+        body: body ?? Container(),
       ),
     );
   }
