@@ -30,6 +30,6 @@ class IndexHeader extends StatelessWidget {
   }
 
   Future<List<Album>> search(String text) async {
-    return await AlbumSearchRepository(text);
+    return await AlbumSearchRepository.searchAlbum(text);
   }
 }

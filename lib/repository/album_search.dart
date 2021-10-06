@@ -12,7 +12,7 @@ class AlbumSearchRepository {
     try {
 
       final response = await DioRequest().get(url);
-      final results = (response['results']['albummatches'] as List).map((json){
+      final results = (response['results']['albummatches']['album'] as List).map((json){
         return Album.fromJson(json);
       }).toList();
       return results;
