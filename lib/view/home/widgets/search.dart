@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fmbanger/config/constants.dart';
+import 'package:fmbanger/view/search/cupertino_delegate.dart';
+import 'package:fmbanger/view/search/search_abstract.dart';
+
+import 'header.dart';
 
 class IndexSearch extends StatelessWidget {
   const IndexSearch({Key? key}) : super(key: key);
@@ -33,6 +37,12 @@ class IndexSearch extends StatelessWidget {
                 color: Colors.white12,
               ),
             ),
+            onTap: (){
+              showPlatformSearch(
+                context: context,
+                delegate: CupertinoSearchDelegate(search),
+              );
+            },
             placeholderStyle:const TextStyle(
               fontWeight: FontWeight.w400,
               color: CupertinoColors.placeholderText,

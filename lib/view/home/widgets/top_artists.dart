@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fmbanger/service/top_artists_service_model.dart';
+import 'package:fmbanger/view/artistdetail/artist_info.dart';
 import 'package:provider/provider.dart';
 
 class TopArtistsView extends StatelessWidget {
@@ -22,9 +23,20 @@ class TopArtistsView extends StatelessWidget {
             padding: const EdgeInsets.only(top: 14.0),
             physics: const NeverScrollableScrollPhysics(),
             children: model.artists.map((artist){
-              return CircleAvatar(
-                radius: 20,
-                backgroundImage: NetworkImage(artist.getSmall),
+              return GestureDetector(
+                onTap: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => ArtistDetailPage(
+                        artist: artist.name!,
+                      ),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 20,
+                  backgroundImage: NetworkImage(artist.getSmall),
+                ),
               );
             }).toList(),
           );

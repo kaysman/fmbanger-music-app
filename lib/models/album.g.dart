@@ -10,18 +10,18 @@ Album _$AlbumFromJson(Map json) => Album(
       listeners: json['listeners'] as String?,
       name: json['name'] as String?,
       artist: json['artist'] as String?,
-      tracks: (json['tracks'] as List<dynamic>?)
-          ?.map((e) => Track.fromJson(Map<String, dynamic>.from(e as Map)))
-          .toList(),
+      tracks: json['tracks'] == null
+          ? null
+          : Tracks.fromJson(Map<String, dynamic>.from(json['tracks'] as Map)),
       image: (json['image'] as List<dynamic>?)
           ?.map((e) => Image.fromJson(Map<String, dynamic>.from(e as Map)))
           .toList(),
       mbid: json['mbid'] as String?,
       url: json['url'] as String?,
       playcount: json['playcount'] as String?,
-      tags: (json['tags'] as List<dynamic>?)
-          ?.map((e) => Tag.fromJson(Map<String, dynamic>.from(e as Map)))
-          .toList(),
+      tags: json['tags'] == null
+          ? null
+          : Tags.fromJson(Map<String, dynamic>.from(json['tags'] as Map)),
       wiki: json['wiki'] == null
           ? null
           : Wiki.fromJson(Map<String, dynamic>.from(json['wiki'] as Map)),
@@ -38,6 +38,16 @@ Map<String, dynamic> _$AlbumToJson(Album instance) => <String, dynamic>{
       'name': instance.name,
       'listeners': instance.listeners,
       'wiki': instance.wiki,
+    };
+
+Tags _$TagsFromJson(Map json) => Tags(
+      tag: (json['tag'] as List<dynamic>?)
+          ?.map((e) => Tag.fromJson(Map<String, dynamic>.from(e as Map)))
+          .toList(),
+    );
+
+Map<String, dynamic> _$TagsToJson(Tags instance) => <String, dynamic>{
+      'tag': instance.tag,
     };
 
 Tag _$TagFromJson(Map json) => Tag(

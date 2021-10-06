@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fmbanger/models/album.dart';
 
 import 'search_abstract.dart';
+import 'search_result_page.dart';
 
 class CupertinoSearchDelegate extends AbstractPlatformSearchDelegate {
   final Future<List<Album>> Function(String text) search;
+
   CupertinoSearchDelegate(this.search);
 
   Widget buildActions(BuildContext context) {
@@ -21,56 +24,16 @@ class CupertinoSearchDelegate extends AbstractPlatformSearchDelegate {
   }
 
   @override
-  Widget buildResults(BuildContext context)  {
-    return FutureBuilder<List<Album>>(
-      future: search(query),
-      builder: (context, snapshot){
-        if (snapshot.connectionState == ConnectionState.waiting){
-          return const Center(
-            child: CupertinoActivityIndicator(),
-          );
-        } else if (snapshot.hasError) {
-          return Center(
-            child: Text(snapshot.error!.toString()),
-          );
-        } else {
-          return GridView.builder(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
-              childAspectRatio: 2 / 2.3,
-              mainAxisSpacing: 15.0,
-              crossAxisSpacing: 20.0,
-            ),
-            itemBuilder: (context, index){
-              final album = snapshot.data![index];
-              return Card(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(album.name!),
-                    Text(album.url!),
-                  ],
-                ),
-              );
-            },
-          );
-        }
-      }
+  Widget buildResults(BuildContext context) {
+    return SearchResultsPage(
+      search: search,
+      query: query,
     );
   }
 
   @override
-  Widget buildSuggestions(BuildContext context)  {
-    // final List<String> result = search(query);
-    // return ListView.separated(
-    //   itemCount: 1,
-    //   itemBuilder: (context, index) {
-    //     return ListTile(title: Text(result[index]));
-    //   },
-    //   separatorBuilder: (context, index) {
-    //     return const Divider(color: Colors.white24);
-    //   },
-    // );
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: store previous search results at local data using sqflite
     return Container();
   }
 

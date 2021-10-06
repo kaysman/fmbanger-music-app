@@ -20,6 +20,12 @@ Artist _$ArtistFromJson(Map json) => Artist(
           : Stat.fromJson(Map<String, dynamic>.from(json['stats'] as Map)),
       streamable: json['streamable'] as String?,
       url: json['url'] as String?,
+      wiki: json['bio'] == null
+          ? null
+          : Wiki.fromJson(Map<String, dynamic>.from(json['bio'] as Map)),
+      similar: json['similar'] == null
+          ? null
+          : Similar.fromJson(Map<String, dynamic>.from(json['similar'] as Map)),
     );
 
 Map<String, dynamic> _$ArtistToJson(Artist instance) => <String, dynamic>{
@@ -32,4 +38,16 @@ Map<String, dynamic> _$ArtistToJson(Artist instance) => <String, dynamic>{
       'image': instance.image,
       'listeners': instance.listeners,
       'playcount': instance.playcount,
+      'similar': instance.similar,
+      'bio': instance.wiki,
+    };
+
+Similar _$SimilarFromJson(Map json) => Similar(
+      artist: (json['artist'] as List<dynamic>?)
+          ?.map((e) => Artist.fromJson(Map<String, dynamic>.from(e as Map)))
+          .toList(),
+    );
+
+Map<String, dynamic> _$SimilarToJson(Similar instance) => <String, dynamic>{
+      'artist': instance.artist,
     };

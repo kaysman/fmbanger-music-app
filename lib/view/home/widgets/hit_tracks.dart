@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fmbanger/service/hit_tracks_service_model.dart';
+import 'package:fmbanger/view/trackdetail/track_info.dart';
 import 'package:provider/provider.dart';
 
 class HitTracksView extends StatelessWidget {
@@ -23,30 +24,43 @@ class HitTracksView extends StatelessWidget {
             padding: const EdgeInsets.only(top: 14.0),
             itemBuilder: (context, index) {
               final track = model.tracks[index];
-              return ListTile(
-                leading: SizedBox(
-                  height: 60,
-                  width: 60,
-                  child: Image.network(
-                    track.getMedium,
-                    fit: BoxFit.fill,
+              return InkWell(
+                onTap: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => TrackDetailPage(
+                        trackName: track.name!,
+                        artist: track.artist!.name!,
+                      ),
+                      fullscreenDialog: true,
+                    ),
+                  );
+                },
+                child: ListTile(
+                  leading: SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: Image.network(
+                      track.getMedium,
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                ),
-                title: Text(track.name!),
-                subtitle: Text(track.artist!.name!),
-                trailing: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.white60,
-                      size: 18,
-                    ),
-                    Text(
-                      track.listeners!,
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ],
+                  title: Text(track.name!),
+                  subtitle: Text(track.artist!.name!),
+                  trailing: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(
+                        Icons.remove_red_eye,
+                        color: Colors.white60,
+                        size: 18,
+                      ),
+                      Text(
+                        track.listeners!,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

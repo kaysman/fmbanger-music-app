@@ -21,16 +21,36 @@ class Album {
 
   final String? artist;
   final String? mbid;
-  final List<Tag>? tags;
+  final Tags? tags;
   final String? playcount;
   final List<Image>? image;
-  final List<Track>? tracks;
+  final Tracks? tracks;
   final String? url;
   final String? name;
   final String? listeners;
   final Wiki? wiki;
 
   factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
+
+  // getters
+  String get getSmall => image!.where((element) => element.size == "small").first.text!;
+  String get getMedium => image!.where((element) => element.size == "medium").first.text!;
+  String get getLarge => image!.where((element) => element.size == "large").first.text!;
+  String get getExtraLarge => image!.where((element) => element.size == "extralarge").first.text!;
+  String get getMega => image!.where((element) => element.size == "mega").first.text!;
+
+
+}
+
+@JsonSerializable(anyMap: true)
+class Tags {
+
+  Tags({this.tag});
+
+  final List<Tag>? tag;
+
+  factory Tags.fromJson(Map<String, dynamic> json) => _$TagsFromJson(json);
+
 }
 
 @JsonSerializable(anyMap: true)
@@ -54,4 +74,5 @@ class Wiki {
   final String? content;
 
   factory Wiki.fromJson(Map<String, dynamic> json) => _$WikiFromJson(json);
+
 }

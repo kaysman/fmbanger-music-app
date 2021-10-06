@@ -28,8 +28,9 @@ class IndexHeader extends StatelessWidget {
       ],
     );
   }
+}
 
-  Future<List<Album>> search(String text) async {
-    return await AlbumSearchRepository.searchAlbum(text);
-  }
+
+Future<List<Album>> search(String text) async {
+  return await AlbumSearchRepository.searchAlbum(text);
 }

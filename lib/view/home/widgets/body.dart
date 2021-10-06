@@ -19,7 +19,7 @@ class IndexBody extends StatelessWidget {
             unselectedLabelColor: Colors.white38,
             tabs: [
               Tab(icon: Text("Top artists")),
-              Tab(icon: Text("Trend Albums")),
+              Tab(icon: Text("Hit Tracks")),
             ],
           ),
           Expanded(
